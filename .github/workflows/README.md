@@ -9,10 +9,11 @@ on:
     branches: [ main ]
 
 jobs:
-  call-reusable-workflow:
+  shared-pr-workflow:
     uses: yearn/webops-workflows/.github/workflows/pull-request.yml@main
-    with:
-      node-version: '20'
-      run-tests: true
+    secrets:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.WEBOPS_TG_TOKEN  }}
+      CHAT_ID: ${{ secrets.WEBOPS_TG_CHAT_ID }}
+      TOPIC_ID: ${{ secrets.WEBOPS_TG_PR_MESSAGE_THREAD_ID }}
 
 ```
